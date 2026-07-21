@@ -59,17 +59,19 @@ function App() {
 
 function Menu() {
   const pizzas = pizzaData;
-  const numPizzas = pizzas.length
+  const numPizzas = pizzas.length;
 
   return (
     <main className="menu">
       <h2>Our menu</h2>
-      {numPizzas > 0 && (
+      {numPizzas > 0 ? (
         <ul className="pizzas">
           {pizzaData.map((pizza) => (
             <Pizza pizzaObj={pizza} key={pizza.name} />
           ))}
         </ul>
+      ) : (
+        <p>We're still working on our menu. Please come back later :)</p>
       )}
     </main>
   );
@@ -106,7 +108,7 @@ function Footer() {
 
   return (
     <footer>
-      {isOpen && (
+      {isOpen ? (
         <div className="order">
           <p>
             We're currently open until {closeHour}:00. Come visit us or order
@@ -114,6 +116,11 @@ function Footer() {
           </p>
           <button className="btn">Order Now</button>
         </div>
+      ) : (
+        <p>
+          We're happy to welcome you between {openHour} and {closeHour}, Those
+          are working hours
+        </p>
       )}
     </footer>
   );
